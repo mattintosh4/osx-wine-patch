@@ -1,3 +1,18 @@
+diff --git a/support/shlib-install b/support/shlib-install
+index 3d0fb3c..56f48dd 100755
+--- a/support/shlib-install
++++ b/support/shlib-install
+@@ -72,7 +72,7 @@ fi
+ case "$host_os" in
+ hpux*|darwin*|macosx*|linux*)
+ 	if [ -z "$uninstall" ]; then
+-		chmod 555 ${INSTALLDIR}/${LIBNAME}
++		chmod 755 ${INSTALLDIR}/${LIBNAME}
+ 	fi ;;
+ cygwin*|mingw*)
+ 	IMPLIBNAME=`echo ${LIBNAME} \
+diff --git a/support/shobj-conf b/support/shobj-conf
+index c61dc78..cafdded 100644
 --- a/support/shobj-conf
 +++ b/support/shobj-conf
 @@ -157,19 +157,19 @@ freebsd[4-9]*|freebsdelf*|dragonfly*)
