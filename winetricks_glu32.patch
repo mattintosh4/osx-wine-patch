@@ -1,8 +1,8 @@
 diff --git a/src/winetricks b/src/winetricks
-index 6597cc8..3fb6841 100755
+index 6597cc8..1ef165d 100755
 --- a/src/winetricks
 +++ b/src/winetricks
-@@ -5476,6 +5476,23 @@ load_gfw()
+@@ -5476,6 +5476,24 @@ load_gfw()
  
  #----------------------------------------------------------------
  
@@ -19,6 +19,7 @@ index 6597cc8..3fb6841 100755
 +    helper_xpsp3jp i386/glu32.dl_
 +
 +    w_try_cabextract -d "$W_SYSTEM32_DLLS" -L "$W_TMP"/i386/glu32.dl_
++    w_override_dlls native,builtin glu32
 +}
 +
 +#----------------------------------------------------------------
