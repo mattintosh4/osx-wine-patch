@@ -1,0 +1,56 @@
+diff --git a/src/winetricks b/src/winetricks
+index 519271f..4e2a035 100755
+--- a/src/winetricks
++++ b/src/winetricks
+@@ -6079,6 +6079,51 @@ load_nuget()
+ 
+ #----------------------------------------------------------------
+ 
++w_metadata odbc dlls \
++    title="" \
++    publisher="Microsoft" \
++    year="" \
++    media="download" \
++    file1="../xpsp3jp/WindowsXP-KB936929-SP3-x86-JPN.exe" \
++    installed_file1="$W_SYSTEM32_DLLS_WIN/odbc32.dll"
++
++load_odbc()
++{
++    set -- \
++        msjet40.dl_     \
++        mswstr10.dl_    \
++        odbc32.dl_      \
++        odbc32gt.dl_    \
++        odbcad32.ex_    \
++        odbcconf.dl_    \
++        odbcconf.ex_    \
++        odbccp32.cp_    \
++        odbccp32.dl_    \
++        odbccr32.dl_    \
++        odbccu32.dl_    \
++        odbcint.dl_     \
++        odbcji32.dl_    \
++        odbcjt32.dl_    \
++        odbcp32r.dl_    \
++        odbctrac.dl_
++
++    for f
++    do
++        helper_xpsp3jp i386/$f
++        w_try_cabextract -d "$W_SYSTEM32_DLLS" -L "$W_TMP"/i386/$f
++        case $f in
++        odbc32.dl_  ) w_override_dlls native odbc32 ;;
++        odbccp32.dl_) w_override_dlls native odbccp32 ;;
++        odbccu32.dl_) w_override_dlls native odbccu32 ;;
++        esac
++    done
++
++    w_try_regsvr msjet40.dll
++    w_try_regsvr odbcconf.dll
++}
++
++#----------------------------------------------------------------
++
+ w_metadata ogg dlls \
+     title="OpenCodecs 0.85: flac, speex, theora, vorbis, WebM" \
+     publisher="xiph.org" \
