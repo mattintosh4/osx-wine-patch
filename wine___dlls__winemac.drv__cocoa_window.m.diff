@@ -1,10 +1,10 @@
 diff --git a/dlls/winemac.drv/cocoa_window.m b/dlls/winemac.drv/cocoa_window.m
-index 48c5056..c949518 100644
+index 48d0651..9d112b0 100644
 --- a/dlls/winemac.drv/cocoa_window.m
 +++ b/dlls/winemac.drv/cocoa_window.m
-@@ -781,6 +781,9 @@ - (BOOL) orderBelow:(WineWindow*)prev orAbove:(WineWindow*)next activate:(BOOL)a
- 
-             [controller transformProcessToForeground];
+@@ -1140,6 +1140,9 @@ - (void) orderBelow:(WineWindow*)prev orAbove:(WineWindow*)next activate:(BOOL)a
+             [NSApp unhide:nil];
+             wasVisible = [self isVisible];
  
 +            [NSApp setPresentationOptions:NSApplicationPresentationAutoHideDock|
 +                                          NSApplicationPresentationAutoHideMenuBar];
